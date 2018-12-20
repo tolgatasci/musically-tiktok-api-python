@@ -5,7 +5,7 @@ we can work together to develop.
 
 ## Wiki Info
 - [Change Device Info](https://github.com/tolgatasci/musically-tiktok-api-python/wiki/Device-Info-Change "Change Device Info")
-
+- [Create Account](https://github.com/tolgatasci/musically-tiktok-api-python/wiki/Account-Create "Create Account")
 
 ### Login Username, Password
     print(api.login("username","password"))
