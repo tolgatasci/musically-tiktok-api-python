@@ -25,6 +25,11 @@ we can work together to develop.
 	for x in range(255):
         	view = api.view_post(aweme_id=6632541425961536773,session=api.active_user['cookies'])
         	print(view)
+### Follow and Unfollow ( Require Session )
+	follow = api.follow(user_id='6594722549190574086',type=1,session=api.active_user['cookies'])
+	print(follow)
+	unfollow = api.follow(user_id='6594722549190574086',type=0,session=api.active_user['cookies'])
+	print(unfollow)
 ### MIT License
 
 	Copyright (c) 2018 Tolga
