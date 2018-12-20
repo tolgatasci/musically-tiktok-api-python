@@ -34,7 +34,7 @@ class helper():
             headers[c_key] = c_value
         return requests.get(url, headers=headers)
     def request_post(self,url,posts = {}, costum_headers= {}, session = {}):
-        cookies = " "
+        cookies = ""
         for key, value in session.items():
             cookies+=key+"="+value+"; "
         if(session.__len__()<1):
@@ -104,7 +104,7 @@ class helper():
             veriable.append(ord(str.__getitem__(x)) ^ key)
         for c in veriable:
 
-            donen+= self.base_convert(c,10,16)
+            donen+= self.base_convert(number=c,fromBase=10,toBase=16)
         return donen
     def base_convert(self,number, fromBase, toBase):
         try:
