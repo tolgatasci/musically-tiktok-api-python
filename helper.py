@@ -4,6 +4,7 @@ import itertools
 import requests
 import time
 import urllib.parse
+import re
 from urllib import parse
 class helper():
 
@@ -51,7 +52,7 @@ class helper():
         for c_key, c_value in costum_headers.items():
             headers[c_key] = c_value
         return requests.post(url, headers=headers, data=posts)
-    def default_veriable(self):
+    def default_veriable(self,data = {}):
         items = {}
         items['app_language']  = "tr"
         items['language']  = "tr"
@@ -90,7 +91,10 @@ class helper():
         items['ts']  = int(round(time.time() * 1000))
         items['as']  = "a1qwert123"
         items['cp']  = "cbfhckdckkde1"
-        items['mas']  = ""
+
+        if(data.__len__()>0):
+            for x,y in data.items():
+                items[x] = y
         return items
     def xor(self,str, key = 5):
         veriable = []
@@ -139,10 +143,16 @@ class helper():
         data_export['session_key'] = data.get('session_key')
         data_export['screen_name'] = data.get('screen_name')
         return data_export
-helper = helper()
+    def explode_cookie(self,data):
+        export = {}
+        data = "odin_tt=b9f3c4b42e3ff2f7eb5a06c39ac664c7c21e1cd2226db20e658bebace2e1503ca4ad2b7c2ad2ab1b24c53be148314906386f07fef10f1c21a4da4fa4cdc52717; Path=/; Domain=musical.ly; Max-Age=86400000, sid_guard=b135c35a9ca3f50a617be3fb04daaa20%7C1545306199%7C5184000%7CMon%2C+18-Feb-2019+11%3A43%3A19+GMT; Path=/; Domain=musical.ly; Max-Age=31104000; HttpOnly, uid_tt=59794936411cf45514525b4593b045ae4287bcb2ecdf1bb7026ead4e4717f33e; Path=/; Domain=musical.ly; Max-Age=5184000; HttpOnly, sid_tt=b135c35a9ca3f50a617be3fb04daaa20; Path=/; Domain=musical.ly; Max-Age=5184000; HttpOnly, sessionid=b135c35a9ca3f50a617be3fb04daaa20; Path=/; Domain=musical.ly; Max-Age=5184000; HttpOnly"
+        bul = re.findall(r'(.*?)\=(.*?)\;', data)
+        print(bul)
+        return export
+'''helper = helper()
 url = "https://api2.musical.ly/aweme/v1/feed/?count=500&offset=0&max_cursor=0&type=0&is_cold_start=1&pull_type=1&"+helper.query(helper.default_veriable())
 
-'''test = helper.request_get(url,{'test':'test','session':'xx'})
+test = helper.request_get(url,{'test':'test','session':'xx'})
 print(test.content)
 
 '''
