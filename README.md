@@ -21,7 +21,7 @@ we can work together to develop.
     print(like)
     unlike = api.like_post(aweme_id='6632541425961536773',type='0',session=api.active_user['cookies'])
     print(unlike)
-### Video Watched Stat ( Require Session )
+### increase monitoring ( Require Session )
 	for x in range(255):
         	view = api.view_post(aweme_id=6632541425961536773,session=api.active_user['cookies'])
         	print(view)
