@@ -12,7 +12,8 @@ class helper():
         (int(round(time.time() * 1000)));
     @staticmethod
     def request_get(self,url,costum_headers= {}, session = {}):
-        cookies = " "
+
+        cookies = ""
         for key, value in session.items():
             cookies+=key+"="+value+"; "
         if(session.__len__()<1):
@@ -144,11 +145,8 @@ class helper():
         data_export['screen_name'] = data.get('screen_name')
         return data_export
     def explode_cookie(self,data):
-        export = {}
-        data = "odin_tt=b9f3c4b42e3ff2f7eb5a06c39ac664c7c21e1cd2226db20e658bebace2e1503ca4ad2b7c2ad2ab1b24c53be148314906386f07fef10f1c21a4da4fa4cdc52717; Path=/; Domain=musical.ly; Max-Age=86400000, sid_guard=b135c35a9ca3f50a617be3fb04daaa20%7C1545306199%7C5184000%7CMon%2C+18-Feb-2019+11%3A43%3A19+GMT; Path=/; Domain=musical.ly; Max-Age=31104000; HttpOnly, uid_tt=59794936411cf45514525b4593b045ae4287bcb2ecdf1bb7026ead4e4717f33e; Path=/; Domain=musical.ly; Max-Age=5184000; HttpOnly, sid_tt=b135c35a9ca3f50a617be3fb04daaa20; Path=/; Domain=musical.ly; Max-Age=5184000; HttpOnly, sessionid=b135c35a9ca3f50a617be3fb04daaa20; Path=/; Domain=musical.ly; Max-Age=5184000; HttpOnly"
-        bul = re.findall(r'(.*?)\=(.*?)\;', data)
-        print(bul)
-        return export
+
+        return data
 '''helper = helper()
 url = "https://api2.musical.ly/aweme/v1/feed/?count=500&offset=0&max_cursor=0&type=0&is_cold_start=1&pull_type=1&"+helper.query(helper.default_veriable())
 
