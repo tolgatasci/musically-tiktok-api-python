@@ -58,4 +58,11 @@ class api():
         else:
             data = helper.request_get(self,url)
         return data.json()
-
+    def search_user(self,text = 'teamtolga'):
+        url = self.api_url + "aweme/v1/discover/search/?cursor=0&keyword="+text+"&count=10&type=1&hot_search=0&"+helper.query(helper.default_veriable())
+        data = helper.request_get(self,url)
+        return data.json()
+    def like_post(self,aweme_id = 1, type='1', session = {}):
+        url = self.api_url + "aweme/v1/commit/item/digg/?aweme_id="+ aweme_id +"&type="+ type +"&retry_type=no_retry&from=3&"+helper.query(helper.default_veriable())
+        data = helper.request_get(self,url,session=session)
+        return data.json()
