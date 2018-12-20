@@ -30,6 +30,9 @@ we can work together to develop.
 	print(follow)
 	unfollow = api.follow(user_id='6594722549190574086',type=0,session=api.active_user['cookies'])
 	print(unfollow)
+### Get User İnfo ( No Require Session )
+	user_info = api.user_info(user_id=6594722549190574086,session=api.active_user['cookies'])
+	print(user_info)
 ### MIT License
 
 	Copyright (c) 2018 Tolga
