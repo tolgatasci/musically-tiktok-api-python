@@ -147,10 +147,3 @@ class helper():
     def explode_cookie(self,data):
 
         return data
-'''helper = helper()
-url = "https://api2.musical.ly/aweme/v1/feed/?count=500&offset=0&max_cursor=0&type=0&is_cold_start=1&pull_type=1&"+helper.query(helper.default_veriable())
-
-test = helper.request_get(url,{'test':'test','session':'xx'})
-print(test.content)
-
-'''
