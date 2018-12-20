@@ -87,3 +87,10 @@ class api():
         else:
             data = self.helper.request_get(self,url)
         return data.json()
+    def user_video_list(self,user_id = '6594722549190574086', session = {}):
+        url = self.api_url + "aweme/v1/aweme/post/?user_id="+str(user_id)+"&max_cursor=0&type=0&count=20&pull_type=1&"+self.helper.query(self.helper.default_veriable(self.global_veriable))
+        if(session.__len__()>0):
+            data = self.helper.request_get(self,url,session=session)
+        else:
+            data = self.helper.request_get(self,url)
+        return data.json()
