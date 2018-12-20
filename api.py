@@ -76,3 +76,11 @@ class api():
 
         data = self.helper.request_post(url,posts=data,session=session)
         return data.json()
+    def follow(self,user_id = '6594722549190574086', type='1', session = {}):
+        url = self.api_url + "aweme/v1/commit/follow/user/?user_id="+str(user_id)+"&type="+str(type)+"&retry_type=no_retry&from=3&"+self.helper.query(self.helper.default_veriable())
+        data = self.helper.request_get(self,url,session=session)
+        return data.json()
+    def user_info(self,user_id = '6594722549190574086', session = {}):
+        url = self.api_url + "aweme/v1/user/?user_id=" + str(user_id)+"&"+self.helper.query(self.helper.default_veriable())
+        data = self.helper.request_get(self,url,session=session)
+        return data.json()
