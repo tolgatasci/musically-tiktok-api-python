@@ -2,8 +2,8 @@ from api import api
 import sys
 if __name__ == "__main__":
     api = api()
-    api.global_veriable['as'] = "test"
-    api.global_veriable['cp'] = "test"
+    #api.global_veriable['as'] = "test" change Device Info
+    #api.global_veriable['cp'] = "test" change Device Info
     (api.login("",""))
 
     # Cookie Active User
