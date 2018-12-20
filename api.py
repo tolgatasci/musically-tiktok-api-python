@@ -6,13 +6,16 @@ from helper import *
 class api():
     api_url = "https://api2.musical.ly/"
     global_veriable = {}
+    active_user = {}
     def __init__(self):
         var = 1
     def login(self,username,password):
         username = helper.xor(username)
         if os.path.exists(username+'.json'):
-            with open(username+'.json') as json_file:
-                return json.load(json_file)
+            with open(username+'.json', encoding='utf-8') as json_file:
+                load = json.load(json_file)
+                self.active_user = load
+                return load
         password = helper.xor(password)
         url = self.api_url+"passport/user/login/?"+helper.query(helper.default_veriable(self.global_veriable))
 
@@ -47,3 +50,12 @@ class api():
                 return success
             else:
                 return login.json()
+
+    def home_list(self,user_data = {}):
+        url = self.api_url + "aweme/v1/feed/?count=20&offset=0&max_cursor=0&type=0&is_cold_start=1&pull_type=1&"+helper.query(helper.default_veriable())
+        if(user_data.__len__()>0):
+            data = helper.request_get(self,url,session=self.active_user['cookies'])
+        else:
+            data = helper.request_get(self,url)
+        return data.json()
+
