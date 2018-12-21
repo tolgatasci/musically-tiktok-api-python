@@ -4,6 +4,7 @@ Musically ( Tiktok ) api python open source free...
 we can work together to develop.
 
 ## Wiki Info
+- [Auto Mass Create Account Tiktok](https://github.com/tolgatasci/musically-tiktok-api-python/wiki/Auto-Mass-Create-Account-Tiktok "Auto Mass Create Account Tiktok")
 - [Change Device Info](https://github.com/tolgatasci/musically-tiktok-api-python/wiki/Device-Info-Change "Change Device Info")
 - [Create Account](https://github.com/tolgatasci/musically-tiktok-api-python/wiki/Account-Create "Create Account")
 
