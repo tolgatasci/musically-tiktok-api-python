@@ -1,3 +1,5 @@
+from PIL import Image
+from io import BytesIO
 import requests
 import json
 import os.path
@@ -15,8 +17,9 @@ class api():
         if os.path.exists(username+'.json'):
             with open(username+'.json', encoding='utf-8') as json_file:
                 load = json.load(json_file)
-                self.active_user = load
-                return load
+                if(load.get('data')['user_id']):
+                    self.active_user = load
+                    return load
         password = self.helper.xor(password)
         url = self.api_url+"passport/user/login/?"+self.helper.query(self.helper.default_veriable(self.global_veriable))
 
@@ -30,7 +33,7 @@ class api():
             'captcha': None
         }
         login = self.helper.request_post(url,posts)
-
+        
         try:
             headers = {}
             for c in login.cookies:
