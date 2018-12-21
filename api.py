@@ -1,3 +1,5 @@
+import time
+from time import sleep
 import requests
 import json
 import os.path
@@ -31,7 +33,7 @@ class api():
             'captcha': None
         }
         login = self.helper.request_post(url,posts)
-        
+
         try:
             headers = {}
             for c in login.cookies:
@@ -95,3 +97,20 @@ class api():
         else:
             data = self.helper.request_get(self,url)
         return data.json()
+    def register(self,user={},extra={}):
+        data = self.helper.default_veriable()
+        data['mix_mode'] = '1'
+        data['email'] = self.helper.xor(user['email'])
+        data['password'] = self.helper.xor(user['password'])
+        data['code'] = None
+        data['recaptcha_token'] = None
+
+        url = self.api_url + "passport/email/register/v2/?"+self.helper.query(self.helper.default_veriable(self.global_veriable))
+        data = self.helper.request_post(url,posts=data)
+        headers = {}
+        for c in data.cookies:
+            headers[c.name]= c.value
+        send_data = {}
+        send_data['data'] = data.json().get('data')
+        send_data['cookies'] = headers
+        return send_data
