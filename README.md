@@ -3,6 +3,11 @@ Musically ( Tiktok ) api python open source free...
 
 we can work together to develop.
 
+## Require
+- Python 3.x
+- Json
+- requests
+
 ## Wiki Info
 - [Change Device Info](https://github.com/tolgatasci/musically-tiktok-api-python/wiki/Device-Info-Change "Change Device Info")
 - [Create Account](https://github.com/tolgatasci/musically-tiktok-api-python/wiki/Account-Create "Create Account")
