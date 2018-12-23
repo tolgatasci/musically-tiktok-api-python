@@ -1,4 +1,5 @@
 import json
+import os
 import time
 from time import sleep
 
@@ -40,6 +41,8 @@ class YZ:
             boyutlar['sol_y'] = pt[1]
             boyutlar['sag_x'] = pt[0] + w
             boyutlar['sag_y'] = pt[1] + h
+        os.remove("resimler/cop/kucuk/"+str(id)+".jpg")
+        os.remove("resimler/cop/buyuk/"+str(id)+".jpg")
         '''for i in range(1):
             plt.subplot(1,1,1),plt.imshow(img_rgb,'gray')
             plt.title("test")
