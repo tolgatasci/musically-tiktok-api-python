@@ -3,7 +3,7 @@ Musically ( Tiktok ) api python open source free...
 
 we can work together to develop.
 
-## Require
+## Required
 - Python 3.x
 - Json
 - requests
