@@ -1,4 +1,6 @@
 import time
+from io import StringIO
+from io import BytesIO
 from time import sleep
 import requests
 import json
@@ -114,3 +116,28 @@ class api():
         send_data['data'] = data.json().get('data')
         send_data['cookies'] = headers
         return send_data
+    def register_device(self):
+        '''
+            No Complate
+        :return:
+        '''
+        header = {}
+        data = open('./content.data', 'rb').read()
+        sio = BytesIO(data)
+        print(sio.read())
+        header['Content-Type'] = 'application/octet-stream;tt-data=a'
+        url  = "http://applog.musical.ly/service/2/device_register/"
+        data = self.helper.request_post(url,posts=data,costum_headers=header)
+        print(data.content)
+    def follow_list(self,user_id = '6594722549190574086', count = 20,max_time = None,session = {}):
+        if(max_time==None):
+            max_time = int(round(time.time() * 1000))
+        url = self.api_url + "aweme/v1/user/follower/list/?user_id="+str(user_id)+"&count="+str(count)+"&max_time="+str(max_time)+"&retry_type=no_retry&"+self.helper.query(self.helper.default_veriable(self.global_veriable))
+        data = self.helper.request_get(self,url,session=session)
+        return data.json()
+    def following_list(self,user_id = '6594722549190574086', count = 20,max_time = None,session = {}):
+        if(max_time==None):
+            max_time = int(round(time.time() * 1000))
+        url = self.api_url + "aweme/v1/user/following/list/?user_id="+str(user_id)+"&count="+str(count)+"&max_time="+str(max_time)+"&retry_type=no_retry&"+self.helper.query(self.helper.default_veriable(self.global_veriable))
+        data = self.helper.request_get(self,url,session=session)
+        return data.json()
