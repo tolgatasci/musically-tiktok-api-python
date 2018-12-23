@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import itertools
 import requests
 import time
 import urllib.parse
