@@ -141,3 +141,12 @@ class api():
         url = self.api_url + "aweme/v1/user/following/list/?user_id="+str(user_id)+"&count="+str(count)+"&max_time="+str(max_time)+"&retry_type=no_retry&"+self.helper.query(self.helper.default_veriable(self.global_veriable))
         data = self.helper.request_get(self,url,session=session)
         return data.json()
+    ''' Halil İbrahim\'e Teşekkürler  search_hashtag, list_hashtag '''
+    def search_hashtag(self,text):
+        url = self.api_url + "aweme/v1/challenge/search/?cursor=0&keyword="+text+"&count=10&type=1&hot_search=0&"+self.helper.query(self.helper.default_veriable(self.global_veriable))
+        data = self.helper.request_get(self,url)
+        return data.json()
+    def list_hashtag(self,cid):
+        url = self.api_url + "aweme/v1/challenge/aweme/?ch_id="+cid+"&count=20&offset=0&max_cursor=0&type=5&query_type=0&is_cold_start=1&pull_type=1&"+self.helper.query(self.helper.default_veriable(self.global_veriable))
+        data = self.helper.request_get(self,url)
+        return data.json()
