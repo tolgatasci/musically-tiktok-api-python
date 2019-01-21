@@ -1,6 +1,4 @@
 import time
-from io import StringIO
-from io import BytesIO
 from time import sleep
 import requests
 import json
@@ -14,7 +12,7 @@ class api():
     helper = helper()
     def __init__(self):
         var = 1
-    def login(self,username,password):
+    def login(self,username,password,capthcha=None):
         username = self.helper.xor(str=username)
         if os.path.exists(username+'.json'):
             with open(username+'.json', encoding='utf-8') as json_file:
@@ -32,9 +30,13 @@ class api():
             'email': None,
             'mobile': None,
             'account': None,
-            'captcha': ""
+            'captcha': capthcha
         }
         login = self.helper.request_post(url,posts)
+
+        print(login.json())
+        if(login.json().get('data').get('captcha')):
+                return {'error':'captcha','code':login.json().get('data').get('captcha')}
 
         try:
             headers = {}
@@ -123,8 +125,7 @@ class api():
         '''
         header = {}
         data = open('./content.data', 'rb').read()
-        sio = BytesIO(data)
-        print(sio.read())
+      
         header['Content-Type'] = 'application/octet-stream;tt-data=a'
         url  = "http://applog.musical.ly/service/2/device_register/"
         data = self.helper.request_post(url,posts=data,costum_headers=header)
