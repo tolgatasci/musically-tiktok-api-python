@@ -32,7 +32,7 @@ class api():
             'email': None,
             'mobile': None,
             'account': None,
-            'captcha': None
+            'captcha': ""
         }
         login = self.helper.request_post(url,posts)
 
