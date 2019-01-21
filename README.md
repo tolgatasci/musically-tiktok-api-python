@@ -20,7 +20,10 @@ Contact me :
 - [Create Account](https://github.com/tolgatasci/musically-tiktok-api-python/wiki/Account-Create "Create Account")
 
 ### Login Username, Password
+if captcha check demo.py
+
     print(api.login("username","password"))
+    
 ### Home Video List ( No Require Session )
     # Cookie Active User
     # home_list = api.home_list(api.active_user)
