@@ -154,3 +154,13 @@ class api():
         url = self.api_url + "aweme/v1/challenge/aweme/?ch_id="+cid+"&count=20&offset=0&max_cursor=0&type=5&query_type=0&is_cold_start=1&pull_type=1&"+self.helper.query(self.helper.default_veriable(self.global_veriable))
         data = self.helper.request_get(self,url)
         return data.json()
+    def getQRCode(self,user_id = '6594722549190574086',schemaType = 4,session = {}):
+           data = self.helper.default_veriable()
+           data['schema_type'] = schemaType
+           data['object_id'] = user_id
+           costum_headers = {
+                'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+               }        
+           url = self.api_url + "aweme/v1/fancy/qrcode/info/"
+           data = self.helper.request_post(url,posts=data,costum_headers=costum_headers,session=session)
+           return data.json()

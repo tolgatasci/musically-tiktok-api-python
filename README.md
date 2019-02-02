@@ -65,3 +65,6 @@ if captcha check demo.py
 ### Tag list Videos  ( No Require Session )
 	tag_videos = api.list_hashtag(cid=cid)
 	print(tag_videos)	
+### Get QRCode  ( No Require Session )
+	getQRCode= api.getQRCode(user_id='6646182534211108870')
+	print(getQRCode)	
