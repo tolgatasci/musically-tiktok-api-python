@@ -3,11 +3,7 @@ Musically ( Tiktok ) api python open source free...
 
 we can work together to develop.
 
-## Create Register Device Method Private
-service/2/device_register/
-Contact me : 
-- We Chat  : tolgatasci1
-- Telegram : @tolgatasci
+
 
 
 ## Required
