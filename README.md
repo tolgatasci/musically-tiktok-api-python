@@ -3,8 +3,6 @@ Musically ( Tiktok ) api python open source free...
 
 we can work together to develop.
 
-as, cp, mass & Device register 
-[https://www.youtube.com/watch?v=TZrZbq9CTm4](https://www.youtube.com/watch?v=TZrZbq9CTm4 "https://www.youtube.com/watch?v=TZrZbq9CTm4")
 
 
 
