@@ -5,17 +5,17 @@ import time
 import urllib.parse
 import re
 from urllib import parse
-class helper():
 
-    def __init__(self):
-        (int(round(time.time() * 1000)));
+
+class Helper():
+
     @staticmethod
-    def request_get(self,url,costum_headers= {}, session = {}):
+    def request_get(url, costum_headers={}, session={}):
 
         cookies = ""
         for key, value in session.items():
-            cookies+=key+"="+value+"; "
-        if(session.__len__()<1):
+            cookies += key + "=" + value + "; "
+        if (session.__len__() < 1):
             cookies = "null = 1;"
         url_parse = parse.urlsplit(url)
 
@@ -32,11 +32,13 @@ class helper():
         for c_key, c_value in costum_headers.items():
             headers[c_key] = c_value
         return requests.get(url, headers=headers)
-    def request_post(self,url,posts = {}, costum_headers= {}, session = {}):
+
+    @staticmethod
+    def request_post(url, posts={}, costum_headers={}, session={}):
         cookies = ""
         for key, value in session.items():
-            cookies+=key+"="+value+"; "
-        if(session.__len__()<1):
+            cookies += key + "=" + value + "; "
+        if (session.__len__() < 1):
             cookies = "null = 1;"
         url_parse = parse.urlsplit(url)
         headers = {
@@ -52,60 +54,66 @@ class helper():
         for c_key, c_value in costum_headers.items():
             headers[c_key] = c_value
         return requests.post(url, headers=headers, data=posts)
-    def default_veriable(self,data = {}):
-        items = {}
-        items['app_language']  = "tr"
-        items['language']  = "tr"
-        items['region']  = "tr"
-        items['app_type']  = "normal"
-        items['sys_region']  = "TR"
-        items['carrier_region']  = "TR"
-        items['carrier_region_v2']  = "286"
-        items['build_number']  = "8.4.0"
-        items['timezone_offset']  = "10800"
-        items['timezone_name']  = "Europe/Istanbul"
-        items['mcc_mnc']  = "28601"
-        items['is_my_cn']  = "0"
-        items['fp']  = ""
-        items['account_region']  = "TR"
-        items['iid']  = "6620659482206930694"
-        items['ac']  = "wifi"
-        items['channel']  = "googleplay"
-        items['aid']  = "1233"
-        items['app_name']  = "musical_ly"
-        items['version_code']  = "840"
-        items['version_name']  = "8.4.0"
-        items['device_id']  = "6594726280552547846"
-        items['device_platform']  = "android"
-        items['ssmix']  = "a"
-        items['device_type']  = "TA-1020"
-        items['device_brand']  = "Nokia"
-        items['os_api']  = "26"
-        items['os_version']  = "8.0.0"
-        items['openudid']  = "b307b864b574e818"
-        items['manifest_version_code']  = "2018090613"
-        items['resolution']  = "720*1280"
-        items['dpi']  = "320"
-        items['update_version_code']  = "2018090613"
-        items['_rticket']  = int(round(time.time() * 1000))
-        items['ts']  = int(round(time.time() * 1000))
-        items['as']  = "a1qwert123"
-        items['cp']  = "cbfhckdckkde1"
 
-        if(data.__len__()>0):
-            for x,y in data.items():
+    @staticmethod
+    def default_variable(data={}):
+        items = {}
+        items['app_language'] = "cs"
+        items['language'] = "cs"
+        items['region'] = "cs"
+        items['app_type'] = "normal"
+        items['sys_region'] = "CZ"
+        items['carrier_region'] = "CZ"
+        items['carrier_region_v2'] = "230"
+        items['build_number'] = "9.9.0"
+        items['timezone_offset'] = "10800"
+        items['timezone_name'] = "Europe/Istanbul"
+        items['mcc_mnc'] = "23001"
+        items['is_my_cn'] = "0"
+        items['fp'] = ""
+        items['account_region'] = "CZ"
+        items['iid'] = "6620659482206930694"
+        items['ac'] = "wifi"
+        items['channel'] = "googleplay"
+        items['aid'] = "1233"
+        items['app_name'] = "musical_ly"
+        items['version_code'] = "990"
+        items['version_name'] = "9.9.0"
+        items['device_id'] = "6594726280552547846"
+        items['device_platform'] = "android"
+        items['ssmix'] = "a"
+        items['device_type'] = "TA-1020"
+        items['device_brand'] = "Nokia"
+        items['os_api'] = "26"
+        items['os_version'] = "8.0.0"
+        items['openudid'] = "b307b864b574e818"
+        items['manifest_version_code'] = "2019011531"
+        items['resolution'] = "720*1280"
+        items['dpi'] = "320"
+        items['update_version_code'] = "2019011531"
+        items['_rticket'] = int(round(time.time() * 1000))
+        items['ts'] = int(round(time.time() * 1000))
+        items['as'] = "a145cac75e153c5ef36066"
+        items['cp'] = "ab5ac054ec3175e3e1Yaae"
+        items['mas'] = "016d48633d67d491135bc9b025d80be9d56c6c0c6ccc66a6acc6cc"
+
+        if (data.__len__() > 0):
+            for x, y in data.items():
                 items[x] = y
         return items
-    def xor(self,str, key = 5):
-        veriable = []
+
+    @staticmethod
+    def xor(str, key=5):
+        variable = []
         donen = ""
         for x in range(len(str)):
-            veriable.append(ord(str.__getitem__(x)) ^ key)
-        for c in veriable:
-
-            donen+= self.base_convert(number=c,fromBase=10,toBase=16)
+            variable.append(ord(str.__getitem__(x)) ^ key)
+        for c in variable:
+            donen += Helper.base_convert(number=c, fromBase=10, toBase=16)
         return donen
-    def base_convert(self,number, fromBase, toBase):
+
+    @staticmethod
+    def base_convert(number, fromBase, toBase):
         try:
             # Convert number to base 10
             base10 = number
@@ -113,7 +121,7 @@ class helper():
             raise
 
         if toBase < 2 or toBase > 36:
-            raise NotImplementedError
+            raise NotImplementedError()
 
         output_value = ''
         digits = "0123456789abcdefghijklmnopqrstuvwxyz"
@@ -135,14 +143,19 @@ class helper():
 
         output_value = sign + s
         return output_value
-    def query(self,data):
+
+    @staticmethod
+    def query(data):
         return urllib.parse.urlencode(data)
-    def user_data_export(self,data):
+
+    @staticmethod
+    def user_data_export(data):
         data_export = {}
         data_export['user_id'] = data.get('user_id')
         data_export['session_key'] = data.get('session_key')
         data_export['screen_name'] = data.get('screen_name')
         return data_export
-    def explode_cookie(self,data):
 
+    @staticmethod
+    def explode_cookie(data):
         return data
