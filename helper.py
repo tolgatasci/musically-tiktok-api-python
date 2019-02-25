@@ -103,46 +103,9 @@ class Helper():
         return items
 
     @staticmethod
-    def xor(str, key=5):
-        variable = []
-        donen = ""
-        for x in range(len(str)):
-            variable.append(ord(str.__getitem__(x)) ^ key)
-        for c in variable:
-            donen += Helper.base_convert(number=c, fromBase=10, toBase=16)
-        return donen
-
-    @staticmethod
-    def base_convert(number, fromBase, toBase):
-        try:
-            # Convert number to base 10
-            base10 = number
-        except ValueError:
-            raise
-
-        if toBase < 2 or toBase > 36:
-            raise NotImplementedError()
-
-        output_value = ''
-        digits = "0123456789abcdefghijklmnopqrstuvwxyz"
-        sign = ''
-
-        if base10 == 0:
-            return '0'
-        elif base10 < 0:
-            sign = '-'
-            base10 = -base10
-
-        # Convert to base toBase
-        s = ''
-        while base10 != 0:
-            r = base10 % toBase
-            r = int(r)
-            s = digits[r] + s
-            base10 //= toBase
-
-        output_value = sign + s
-        return output_value
+    def xor(string, key=5):
+        # now it works also for extended utf-8 characters, and is much simpler
+        return ''.join([hex(int(x ^ key))[2:] for x in string.encode('utf-8')])
 
     @staticmethod
     def query(data):

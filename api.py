@@ -16,14 +16,14 @@ class Api():
         pass
 
     def login(self, username, password, capthcha=None):
-        username = self.helper.xor(str=username)
+        username = self.helper.xor(username)
         if os.path.exists(username + '.json'):
             with open(username + '.json', encoding='utf-8') as json_file:
                 load = json.load(json_file)
                 if (load.get('data')['user_id']):
                     self.active_user = load
                     return load
-        password = self.helper.xor(str=password)
+        password = self.helper.xor(password)
         url = self.api_url + "passport/user/login/?" + self.helper.query(
             self.helper.default_variable(self.global_variable))
 
