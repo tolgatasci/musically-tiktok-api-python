@@ -1,4 +1,4 @@
-from api import api
+from api import Api
 from time import sleep
 import sys
 import os
@@ -10,21 +10,21 @@ def login_(login):
         cc = capthca(login.get('code'))
         if (cc.backdata):
             if (len(cc.backdata) > 0):
-                login = api.login(username, password, cc.backdata)
+                login = Api.login(username, password, cc.backdata)
                 del cc
                 login_(login)
         else:
             print('empty form again')
-            login = api.login(username, password, cc.backdata)
+            login = Api.login(username, password, cc.backdata)
             del cc
             login_(login)
 
 if __name__ == "__main__":
-    api = api()
+    api = Api()
 
-    api.global_veriable['device_id'] = "6648944787888948741"
-    api.global_veriable['iid'] = "6648944787888948741"
-    api.global_veriable['openudid'] = "6vchx2vx3ubd051q"
+    api.global_variable['device_id'] = "6648944787888948741"
+    api.global_variable['iid'] = "6648944787888948741"
+    api.global_variable['openudid'] = "6vchx2vx3ubd051q"
     username = ""
     password = ""
     login = api.login(username,password)

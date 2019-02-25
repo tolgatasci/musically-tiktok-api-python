@@ -10,7 +10,7 @@ import cv2
 import numpy as np
 import urllib.request
 from matplotlib import pyplot as plt
-from helper import helper
+from helper import Helper
 class YZ:
     sayi  = 25
     start_date = 0
