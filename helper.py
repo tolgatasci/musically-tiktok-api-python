@@ -11,11 +11,10 @@ class Helper():
 
     @staticmethod
     def request_get(url, costum_headers={}, session={}):
-
         cookies = ""
         for key, value in session.items():
             cookies += key + "=" + value + "; "
-        if (session.__len__() < 1):
+        if session.__len__() < 1:
             cookies = "null = 1;"
         url_parse = parse.urlsplit(url)
 
@@ -97,7 +96,7 @@ class Helper():
         items['cp'] = "ab5ac054ec3175e3e1Yaae"
         items['mas'] = "016d48633d67d491135bc9b025d80be9d56c6c0c6ccc66a6acc6cc"
 
-        if (data.__len__() > 0):
+        if len(data) > 0:
             for x, y in data.items():
                 items[x] = y
         return items

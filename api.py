@@ -20,7 +20,7 @@ class Api():
         if os.path.exists(username + '.json'):
             with open(username + '.json', encoding='utf-8') as json_file:
                 load = json.load(json_file)
-                if (load.get('data')['user_id']):
+                if load.get('data')['user_id']:
                     self.active_user = load
                     return load
         password = self.helper.xor(password)
@@ -179,7 +179,7 @@ class Api():
     def search_hashtag(self, text):
         url = self.api_url + "aweme/v1/challenge/search/?cursor=0&keyword=" + text + "&count=10&type=1&hot_search=0&" + self.helper.query(
             self.helper.default_variable(self.global_variable))
-        data = self.helper.request_get(self, url)
+        data = self.helper.request_get(url)
         return data.json()
 
     def list_hashtag(self, cid):
