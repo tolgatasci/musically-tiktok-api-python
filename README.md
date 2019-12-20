@@ -3,8 +3,9 @@ Musically ( Tiktok ) api python open source free...
 
 # I not Updating
 
+## if you want try this one
 
-
+- [Other Api](https://github.com/davidteather/TikTok-Api "Other Api")
 
 ## Required
 - Python 3.x
